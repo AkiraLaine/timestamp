@@ -14,6 +14,9 @@ app.get('*', function(req, res){
     } else{
         returnObj.natural = String(Date.create(query));
         returnObj.unix =  Date.parse(returnObj.natural) / 1000; 
+        if(returnObj.natural === "Invalid Date"){
+            returnObj.natural = null;
+        }
     }
     res.send(returnObj)
     res.end();
